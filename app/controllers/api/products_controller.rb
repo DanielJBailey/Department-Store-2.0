@@ -1,8 +1,9 @@
 class Api::ProductsController < ApplicationController
+  before_action :set_department, only: [:index, :create]
   before_action :set_product, only: [:show, :update, :destroy]
 
   def index
-    product = @department.products.all
+    render json: @department.products.all
   end
 
   def show
