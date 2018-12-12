@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../styles/EditProductForm.scss';
 
 class EditProductForm extends Component {
     state= {
@@ -32,13 +33,14 @@ class EditProductForm extends Component {
     render() {
         let {name, description, price} = this.state;
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} className="edit-form">
                 <input 
                     name="name"
                     value={name}
                     placeholder="Product Name:"
                     required
                     onChange={this.handleChange}
+                    className="input"
                 />
                 <textarea
                     name="description"
@@ -46,6 +48,7 @@ class EditProductForm extends Component {
                     placeholder="Product Description"
                     required
                     onChange={this.handleChange}
+                    className="description"
                 />
                 <input 
                     name="price"
@@ -53,9 +56,11 @@ class EditProductForm extends Component {
                     placeholder="Product Price:"
                     required
                     onChange={this.handleChange}
+                    className="input"
                 />
                 <input 
                     type="submit"
+                    className="submit"
                 />
             </form>
         )

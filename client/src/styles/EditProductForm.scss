@@ -1,0 +1,47 @@
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .input {
+        color: #494949;
+        width: 100%;
+        padding: 10px;
+        background-color: rgba(0,0,0,0.1);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: 14px;
+
+    }
+    .description {
+        width: 100%;
+        color: #494949;
+        border: none;
+        margin: 5px 0;
+        border-radius: 5px;
+        background-color: rgba(0,0,0,0.1);
+        resize: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        height: 75px;
+    }
+    .submit {
+        width: 100%;
+        color: #494949;
+        font-weight: bold;
+        margin: 10px 0;
+        background-color: transparent;
+        border: 3px solid #58A4B0;
+        border-radius: 5px;
+        color: #58A4B0;
+        font-size: 16px;
+        cursor: pointer;
+        outline: none;
+        padding: 10px 0;
+        &:hover {
+            background-color: #58A4B0;
+            color: white;
+        }
+    }
+}

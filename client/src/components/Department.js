@@ -10,9 +10,10 @@ class Department extends Component {
     state = {
         products: [],
         department: "",
-        deleting: false
+        deleting: false,
+        editing: false
     }
-    
+
     componentDidMount() {
         let {id} = this.props.match.params;
         axios.get(`/api/departments/${id}/products`)
@@ -42,16 +43,28 @@ class Department extends Component {
                     return res.data;
                 return p;
             });
-            this.setState({products})
+            this.setState({
+                products,
+                editing: false
+            })
         })
-        
     }
 
     toggleDelete = () => {
     let {deleting} = this.state;
         this.setState({
-            deleting: !deleting
+            deleting: !deleting,
+            editing: false
         })
+    }
+
+    toggleEdit = () => {
+        let {editing} = this.state;
+        this.setState({
+            editing: !editing,
+            deleting: false
+        })
+
     }
 
     getDepartment = () => {
@@ -65,18 +78,24 @@ class Department extends Component {
     }
 
     render() {
-        let {department, products, deleting} = this.state;
+        let {department, products, deleting, editing} = this.state;
         return(
             <>
                 <NavBar />
                 <div className="department-container">
                     <ToggleButtons>
                         <button className="toggle" onClick={this.toggleDelete} style={deleting ? {backgroundColor: "black", color: "white"}: null}>Delete Items</button>
-                        <button className="toggle">Edit Products</button>
+                        <button className="toggle" onClick={this.toggleEdit} style={editing ? {backgroundColor: "black", color: "white"}: null}>Edit Products</button>
                     </ToggleButtons>
                     <h1 className="department-name">{department}</h1>
                         <div className="product-container">
-                            <ProductList products={products} remove={this.deleteProduct}deleting={deleting} edit={this.editProduct}/> 
+                            <ProductList 
+                                products={products} 
+                                remove={this.deleteProduct}
+                                deleting={deleting} 
+                                edit={this.editProduct}
+                                editing={editing}
+                            />
                         </div>
                 </div>
             </>
