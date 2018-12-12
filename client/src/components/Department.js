@@ -4,6 +4,7 @@ import '../styles/Department.scss';
 import ProductList from './ProductList';
 import NavBar from './NavBar';
 import styled from 'styled-components';
+import Cart from './Cart';
 
 class Department extends Component {
 
@@ -12,7 +13,8 @@ class Department extends Component {
         department: "",
         deleting: false,
         editing: false,
-        cart: []
+        cart: [],
+        cartOpen: false
     }
 
     componentDidUpdate() {
@@ -39,21 +41,12 @@ class Department extends Component {
         })        
     }
 
-    addToCart = (id, name, description, price) => {
+    addToCart = (id, name, description, price, quantity) => {
         let {cart} = this.state;
-        const product = {id, name, description, price};
+        const product = {id, name, description, price, quantity};
         this.setState({
             cart: [...cart, product]
-        }, this.test2());
-        this.test();
-    }
-
-    test = () => {
-        console.log(this.state.cart);
-    }
-
-    test2 = () => {
-        console.log(this.state.cart);
+        });
     }
 
     deleteProduct = (id) => {
@@ -78,6 +71,13 @@ class Department extends Component {
                 products,
                 editing: false
             })
+        })
+    }
+
+    toggleCart = () => {
+        let {cartOpen} = this.state;
+        this.setState({
+            cartOpen: !cartOpen
         })
     }
 
@@ -109,11 +109,13 @@ class Department extends Component {
     }
 
     render() {
-        let {department, products, deleting, editing, cart} = this.state;
+        let {department, products, deleting, editing, cart, cartOpen} = this.state;
         return(
             <>
-                <NavBar cart={cart}/>
+                <NavBar cart={cart} toggleCart={this.toggleCart}/>
+
                 <div className="department-container">
+                    {cartOpen ? <Cart cart={cart} toggleCart={this.toggleCart}/> : null}
                     <ToggleButtons>
                         <button className="toggle" onClick={this.toggleDelete} style={deleting ? {backgroundColor: "black", color: "white"}: null}>Delete Items</button>
                         <button className="toggle" onClick={this.toggleEdit} style={editing ? {backgroundColor: "black", color: "white"}: null}>Edit Products</button>

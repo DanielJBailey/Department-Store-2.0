@@ -54,11 +54,26 @@
             line-height: 1.4;
             padding: 10px 0;
         }
-        .product-price {
-            color: #373F51;
-            font-size: 16px;
-            text-align: right;
+
+        .price-quantity {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            .product-price {
+                color: #373F51;
+                font-size: 16px;
+                text-align: right;
+            }
+            .quantity {
+                border: none;
+                margin-left: 10px;
+                font-size: 14px;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
         }
+        
         .add-to-cart {
             width: 100%;
             font-weight: bold;
