@@ -1,7 +1,7 @@
 import React from 'react';
 import Product from './Product';
 
-const ProductList = ({products, remove, deleting, edit, editing}) => (
+const ProductList = ({products, remove, deleting, edit, editing, add}) => (
     <>
         {products.map(product => (
             <Product 
@@ -11,6 +11,7 @@ const ProductList = ({products, remove, deleting, edit, editing}) => (
                 deleting={deleting} 
                 edit={edit} 
                 editing={editing}
+                add={add}
             />
         ))}
     </>

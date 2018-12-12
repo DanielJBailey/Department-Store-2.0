@@ -11,10 +11,24 @@ class Department extends Component {
         products: [],
         department: "",
         deleting: false,
-        editing: false
+        editing: false,
+        cart: []
+    }
+
+    componentDidUpdate() {
+        let {cart} = this.state;
+        if(cart !== null && cart.length > 0) {
+            localStorage.setItem('myCart', JSON.stringify(cart));
+        }
     }
 
     componentDidMount() {
+        var cart = JSON.parse(localStorage.getItem('myCart'));
+        if(cart !== null && cart.length > 0) {
+            this.setState({
+                cart: cart
+            })
+        }
         let {id} = this.props.match.params;
         axios.get(`/api/departments/${id}/products`)
         .then(res => {
@@ -23,6 +37,23 @@ class Department extends Component {
             })
             this.getDepartment();
         })        
+    }
+
+    addToCart = (id, name, description, price) => {
+        let {cart} = this.state;
+        const product = {id, name, description, price};
+        this.setState({
+            cart: [...cart, product]
+        }, this.test2());
+        this.test();
+    }
+
+    test = () => {
+        console.log(this.state.cart);
+    }
+
+    test2 = () => {
+        console.log(this.state.cart);
     }
 
     deleteProduct = (id) => {
@@ -78,10 +109,10 @@ class Department extends Component {
     }
 
     render() {
-        let {department, products, deleting, editing} = this.state;
+        let {department, products, deleting, editing, cart} = this.state;
         return(
             <>
-                <NavBar />
+                <NavBar cart={cart}/>
                 <div className="department-container">
                     <ToggleButtons>
                         <button className="toggle" onClick={this.toggleDelete} style={deleting ? {backgroundColor: "black", color: "white"}: null}>Delete Items</button>
@@ -95,6 +126,7 @@ class Department extends Component {
                                 deleting={deleting} 
                                 edit={this.editProduct}
                                 editing={editing}
+                                add={this.addToCart}
                             />
                         </div>
                 </div>
