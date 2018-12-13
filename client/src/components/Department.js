@@ -71,13 +71,9 @@ class Department extends Component {
     }
 
     checkForDupes = (object, value) => {
-        console.log(object);
         for (var i = 0; i < object.length; i++) {
             if (object[i].id === value) {
-                console.log(true);
                 return true;
-            } else {
-                console.log(false); 
             } 
         }
     }

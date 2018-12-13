@@ -3,19 +3,27 @@ import '../styles/Cart.scss';
 
 
 const Cart = ({ cart, toggleCart, removeFromCart }) => {
+
+    // SET Variables
     let cart_id = 0;
     let SubTotal = 0;
     let TaxRate = 0.10;
     let Shipping = 4.99;
     let Total = 0;
+
+    // Get SubTotal from cart array
     cart.forEach(product => {
         SubTotal += (product.price * product.quantity)
     })
+    // Get Tax Amount
     let Taxes = (SubTotal * TaxRate);
+    //Get Total 
     Total = Taxes + SubTotal;
+    // If items exist, display Shipping cost
     if (cart.length > 0) {
         Total += Shipping
     }
+
 
     return (
         <div className="cart-wrapper">
