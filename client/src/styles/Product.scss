@@ -53,6 +53,7 @@
             color: rgba(0, 0, 0, 0.8);
             line-height: 1.4;
             padding: 10px 0;
+            height: 75px;
         }
 
         .price-quantity {
@@ -66,11 +67,12 @@
                 font-size: 16px;
                 text-align: right;
             }
-            .quantity {
-                border: none;
+            #quantity {
+                border: 1px solid #D8DBE2;
                 margin-left: 10px;
                 font-size: 14px;
-                background-color: rgba(0, 0, 0, 0.1);
+                background-color: transparent;
+                border-radius: none;
             }
         }
         
