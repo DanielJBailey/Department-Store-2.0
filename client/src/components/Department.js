@@ -18,19 +18,19 @@ class Department extends Component {
     }
 
     componentDidUpdate() {
-        // let {cart} = this.state;
-        // if(cart !== null && cart.length > 0) {
-        //     localStorage.setItem('myCart', JSON.stringify(cart));
-        // }
+        let {cart} = this.state;
+        if(cart !== null && cart.length > 0) {
+            localStorage.setItem('myCart', JSON.stringify(cart));
+        }
     }
 
     componentDidMount() {
-        // var cart = JSON.parse(localStorage.getItem('myCart'));
-        // if(cart !== null && cart.length > 0) {
-        //     this.setState({
-        //         cart: cart
-        //     })
-        // }
+        var cart = JSON.parse(localStorage.getItem('myCart'));
+        if(cart !== null && cart.length > 0) {
+            this.setState({
+                cart: cart
+            })
+        }
         let { id } = this.props.match.params;
         axios.get(`/api/departments/${id}/products`)
             .then(res => {
@@ -47,7 +47,9 @@ class Department extends Component {
             cart: cart.filter(item => {
                 return item.id !== id
             })
-        })
+        }, () => {
+            localStorage.clear();
+        })        
     }
 
     addToCart = (id, name, description, price, numberOrdered) => {
