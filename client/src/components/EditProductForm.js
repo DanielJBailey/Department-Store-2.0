@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../styles/EditProductForm.scss';
 
 class EditProductForm extends Component {
-    state= {
+    state = {
         name: "",
         price: "",
         description: ""
     }
 
     componentDidMount() {
-        let {name, price, description} = this.props;
+        let { name, price, description } = this.props;
         this.setState({
             name: name,
             description: description,
@@ -24,17 +24,17 @@ class EditProductForm extends Component {
     }
 
     handleSubmit = (e) => {
-        let {id, edit} = this.props;
-        let {name, description, price} = this.state;
+        let { id, edit } = this.props;
+        let { name, description, price } = this.state;
         e.preventDefault();
         edit(id, name, description, price);
     }
 
     render() {
-        let {name, description, price} = this.state;
-        return(
+        let { name, description, price } = this.state;
+        return (
             <form onSubmit={this.handleSubmit} className="edit-form">
-                <input 
+                <input
                     name="name"
                     value={name}
                     placeholder="Product Name:"
@@ -50,7 +50,7 @@ class EditProductForm extends Component {
                     onChange={this.handleChange}
                     className="description"
                 />
-                <input 
+                <input
                     name="price"
                     value={price}
                     placeholder="Product Price:"
@@ -58,7 +58,7 @@ class EditProductForm extends Component {
                     onChange={this.handleChange}
                     className="input"
                 />
-                <input 
+                <input
                     type="submit"
                     className="submit"
                 />

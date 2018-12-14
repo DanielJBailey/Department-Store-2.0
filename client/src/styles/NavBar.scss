@@ -9,8 +9,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 999;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     a {
         text-decoration: none;
         display: flex;
@@ -21,7 +20,7 @@
         padding: 20px 30px;
         color: #1B1B1E;
         &:hover {
-            background-color: rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.1);
         }
     }
     .cart {
@@ -34,7 +33,7 @@
         height: 60px;
         padding: 20px 30px;
         &:hover {
-            background-color: rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.1);
         }
         svg {
             width: 15px;
@@ -42,7 +41,7 @@
         }
         .item-count {
             font-size: 12px;
-            background-color: rgba(0,0,0,0.1);
+            background-color: rgba(0, 0, 0, 0.1);
             width: 25px;
             height: 25px;
             border-radius: 5px;

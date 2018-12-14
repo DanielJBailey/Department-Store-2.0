@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import DepartmentList from './DepartmentList';
 
@@ -14,18 +14,18 @@ class Home extends Component {
 
     componentDidMount() {
         axios.get('/api/departments')
-        .then(res => {
-            this.setState({
-                departments: res.data
+            .then(res => {
+                this.setState({
+                    departments: res.data
+                })
             })
-        })
     }
 
     render() {
-        let {departments} = this.state;
-        return(
+        let { departments } = this.state;
+        return (
             <>
-                <DepartmentList departments={departments}/>
+                <DepartmentList departments={departments} />
             </>
         )
     }

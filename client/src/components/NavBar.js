@@ -9,7 +9,7 @@ const NavBar = ({ cart, toggleCart }) => {
     for (var i = 0; i < cart.length; i++) {
         Total_Quantity += cart[i].quantity
     }
-    
+
     return (
         <div className="navigation">
             <Link to="/">Home</Link>

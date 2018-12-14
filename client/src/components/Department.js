@@ -18,15 +18,15 @@ class Department extends Component {
     }
 
     componentDidUpdate() {
-        let {cart} = this.state;
-        if(cart !== null && cart.length > 0) {
+        let { cart } = this.state;
+        if (cart !== null && cart.length > 0) {
             localStorage.setItem('myCart', JSON.stringify(cart));
         }
     }
 
     componentDidMount() {
         var cart = JSON.parse(localStorage.getItem('myCart'));
-        if(cart !== null && cart.length > 0) {
+        if (cart !== null && cart.length > 0) {
             this.setState({
                 cart: cart
             })
@@ -49,7 +49,7 @@ class Department extends Component {
             })
         }, () => {
             localStorage.clear();
-        })        
+        })
     }
 
     addToCart = (id, name, description, price, numberOrdered) => {
@@ -61,7 +61,7 @@ class Department extends Component {
                 cart: cart.map(item => {
                     if (item.id === id) {
                         item.quantity += quantity
-                    } 
+                    }
                     return item
                 })
             })
@@ -76,7 +76,7 @@ class Department extends Component {
         for (var i = 0; i < object.length; i++) {
             if (object[i].id === value) {
                 return true;
-            } 
+            }
         }
     }
 
